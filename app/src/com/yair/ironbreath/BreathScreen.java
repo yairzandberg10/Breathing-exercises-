@@ -31,7 +31,7 @@ final class BreathScreen extends Screen {
         f.addView(scrim, new FrameLayout.LayoutParams(Ui.MATCH, Ui.MATCH));
         LinearLayout t = Ui.vbox(a);
         t.setPadding(Ui.dp(22), 0, Ui.dp(22), Ui.dp(18));
-        t.addView(Ui.tag(a, tag, color));
+        if (tag != null) t.addView(Ui.tag(a, tag, color));
         TextView h = Ui.text(a, title, 44, 0xFFFFFFFF, Ui.BOLD);
         h.setPadding(0, Ui.dp(6), 0, Ui.dp(6));
         h.setShadowLayer(Ui.dp(10), 0, 0, 0x99000000);
@@ -53,8 +53,8 @@ final class BreathScreen extends Screen {
     @Override
     View create() {
         LinearLayout col = Ui.vbox(a);
-        col.addView(header(a, R.drawable.img_ocean, "BREATHWORK · " + Content.TECHNIQUES.size() + " פרוטוקולים", "נשימה",
-                "הכלי הכי חזק שלך. תמיד זמין, תמיד חינם,\nותמיד איתך – גם כשהכל בוער.", Ui.STEEL), Ui.lp(Ui.MATCH, Ui.dp(290)));
+        col.addView(header(a, R.drawable.img_ocean, null, "נשימה",
+                "הכלי הכי חזק שלך – תמיד זמין.", Ui.STEEL), Ui.lp(Ui.MATCH, Ui.dp(240)));
 
         HorizontalScrollView hs = new HorizontalScrollView(a);
         hs.setHorizontalScrollBarEnabled(false);
@@ -101,7 +101,7 @@ final class BreathScreen extends Screen {
     private View card(final Content.Technique t) {
         LinearLayout r = Ui.hbox(a);
         r.setPadding(Ui.dp(12), Ui.dp(12), Ui.dp(16), Ui.dp(12));
-        r.setBackground(Ui.round(Ui.CARD, 22, 0x17FFFFFF, 1));
+        r.setBackground(Ui.round(Ui.CARD, 22));
 
         FrameLayout orbBox = new FrameLayout(a);
         orbBox.setBackground(Ui.round(Ui.alpha(t.color, 0.08f), 18));
@@ -119,22 +119,14 @@ final class BreathScreen extends Screen {
 
         LinearLayout tx = Ui.vbox(a);
         tx.setPadding(Ui.dp(14), 0, Ui.dp(10), 0);
-        tx.addView(Ui.tag(a, t.en, t.color));
         TextView n = Ui.text(a, t.name, 19, Ui.TEXT, Ui.BOLD);
         n.setPadding(0, Ui.dp(5), 0, Ui.dp(3));
         tx.addView(n);
         tx.addView(Ui.text(a, t.tagline, 13, Ui.MUTED, Ui.REG));
-        LinearLayout meta = Ui.hbox(a);
-        meta.setPadding(0, Ui.dp(8), 0, 0);
-        TextView pat = Ui.text(a, t.pattern, 12, t.color, Ui.NUM);
-        pat.setPadding(Ui.dp(8), Ui.dp(3), Ui.dp(8), Ui.dp(3));
-        pat.setBackground(Ui.round(Ui.alpha(t.color, 0.12f), 10));
-        meta.addView(pat);
-        TextView mins = Ui.text(a, "  ~" + t.minutes(t.rounds) + " דק׳", 12, Ui.MUTED, Ui.NUM);
-        meta.addView(mins);
-        tx.addView(meta);
+        TextView mins = Ui.text(a, t.minutes(t.rounds) + " דקות", 12, t.color, Ui.BOLD);
+        mins.setPadding(0, Ui.dp(6), 0, 0);
+        tx.addView(mins);
         r.addView(tx, Ui.weight(1));
-        r.addView(new IconView(a, IconView.LEFT, Ui.DIM), Ui.lp(Ui.dp(18), Ui.dp(18)));
 
         r.setClickable(true);
         Ui.pressable(r);

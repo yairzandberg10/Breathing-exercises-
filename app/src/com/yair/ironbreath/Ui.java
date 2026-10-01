@@ -108,6 +108,13 @@ final class Ui {
         return t;
     }
 
+    /** Centered text that fills its parent's width (children of vertical boxes stretch by default). */
+    static TextView centered(Context c, CharSequence s, float sp, int color, Typeface tf) {
+        TextView t = text(c, s, sp, color, tf);
+        t.setGravity(Gravity.CENTER);
+        return t;
+    }
+
     /** Small letter-spaced label, used as a "military stencil" tag. */
     static TextView tag(Context c, String s, int color) {
         TextView t = text(c, s, 11, color, NUM);

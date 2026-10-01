@@ -19,8 +19,8 @@ final class MeditateScreen extends Screen {
     @Override
     View create() {
         LinearLayout col = Ui.vbox(a);
-        col.addView(BreathScreen.header(a, R.drawable.img_cliff, "MIND TRAINING · " + Content.MEDITATIONS.size() + " אימונים", "מדיטציה",
-                "אימון לראש. כמו חדר כושר – רק מבפנים.\nבלי קטורת, בלי קלישאות. מיקוד, שליטה ושקט.", Ui.BRASS), Ui.lp(Ui.MATCH, Ui.dp(290)));
+        col.addView(BreathScreen.header(a, R.drawable.img_cliff, null, "מדיטציה",
+                "אימון לראש – מיקוד, שליטה ושקט.", Ui.BRASS), Ui.lp(Ui.MATCH, Ui.dp(240)));
 
         LinearLayout toggles = Ui.hbox(a);
         toggles.setPadding(Ui.dp(16), Ui.dp(4), Ui.dp(16), 0);
@@ -77,13 +77,9 @@ final class MeditateScreen extends Screen {
         View sc = new View(a);
         sc.setBackground(new GradientDrawable(GradientDrawable.Orientation.RIGHT_LEFT, new int[]{0xF50B0C10, 0xB00B0C10, 0x100B0C10}));
         f.addView(sc, new FrameLayout.LayoutParams(Ui.MATCH, Ui.MATCH));
-        View edge = new View(a);
-        edge.setBackgroundColor(m.color);
-        f.addView(edge, new FrameLayout.LayoutParams(Ui.dp(3), Ui.MATCH, Gravity.RIGHT));
 
         LinearLayout t = Ui.vbox(a);
         t.setPadding(Ui.dp(20), Ui.dp(16), Ui.dp(20), Ui.dp(16));
-        t.addView(Ui.tag(a, m.en, m.color));
         TextView n = Ui.text(a, m.title, 23, 0xFFFFFFFF, Ui.BOLD);
         n.setPadding(0, Ui.dp(6), 0, Ui.dp(4));
         t.addView(n);

@@ -26,10 +26,10 @@ public class MainActivity extends Activity {
     private FrameLayout tabHost;
     private FrameLayout navBar;
     private LinearLayout navItems;
-    private View indicator;
     private final Screen[] tabs = new Screen[5];
     private final IconView[] tabIcons = new IconView[5];
     private final TextView[] tabLabels = new TextView[5];
+    private final FrameLayout[] medals = new FrameLayout[5];
     private int tab = -1;
     private final ArrayList<Screen> stack = new ArrayList<>();
     Stats stats;
@@ -65,25 +65,31 @@ public class MainActivity extends Activity {
     }
 
     private void buildNav() {
+        // Floating dock; the active section rises out of it as a glowing ember medallion.
         navBar = new FrameLayout(this);
-        GradientDrawable bg = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{0xF20E0F14, 0xFF0B0C10});
-        navBar.setBackground(bg);
-        navBar.setElevation(Ui.dp(12));
-        View line = new View(this);
-        line.setBackgroundColor(0x14FFFFFF);
-        navBar.addView(line, new FrameLayout.LayoutParams(Ui.MATCH, 1, Gravity.TOP));
+        View dock = new View(this);
+        dock.setBackground(Ui.round(0xFF17191F, 26, 0x14FFFFFF, 1));
+        dock.setElevation(Ui.dp(10));
+        FrameLayout.LayoutParams dl = new FrameLayout.LayoutParams(Ui.MATCH, Ui.dp(62), Gravity.BOTTOM);
+        dl.setMargins(Ui.dp(12), 0, Ui.dp(12), Ui.dp(10));
+        navBar.addView(dock, dl);
 
         navItems = Ui.hbox(this);
+        navItems.setElevation(Ui.dp(11));
         for (int i = 0; i < 5; i++) {
             final int idx = i;
-            LinearLayout item = Ui.vbox(this);
-            item.setGravity(Gravity.CENTER);
+            FrameLayout item = new FrameLayout(this);
+            FrameLayout medal = new FrameLayout(this);
             IconView ic = new IconView(this, TAB_ICONS[i], Ui.MUTED);
-            ic.stroke = 1.8f;
-            item.addView(ic, Ui.lp(Ui.dp(24), Ui.dp(24)));
-            TextView tl = Ui.text(this, TAB_NAMES[i], 11, Ui.MUTED, Ui.REG);
-            tl.setPadding(0, Ui.dp(5), 0, 0);
-            item.addView(tl);
+            ic.stroke = 1.9f;
+            medal.addView(ic, new FrameLayout.LayoutParams(Ui.dp(22), Ui.dp(22), Gravity.CENTER));
+            FrameLayout.LayoutParams ml = new FrameLayout.LayoutParams(Ui.dp(40), Ui.dp(40), Gravity.TOP | Gravity.CENTER_HORIZONTAL);
+            ml.topMargin = Ui.dp(14);
+            item.addView(medal, ml);
+            TextView tl = Ui.centered(this, TAB_NAMES[i], 11, Ui.MUTED, Ui.REG);
+            FrameLayout.LayoutParams ll = new FrameLayout.LayoutParams(Ui.MATCH, Ui.WRAP, Gravity.BOTTOM);
+            ll.bottomMargin = Ui.dp(18);
+            item.addView(tl, ll);
             item.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -92,16 +98,13 @@ public class MainActivity extends Activity {
             });
             tabIcons[i] = ic;
             tabLabels[i] = tl;
+            medals[i] = medal;
             navItems.addView(item, new LinearLayout.LayoutParams(0, Ui.MATCH, 1));
         }
-        navBar.addView(navItems, new FrameLayout.LayoutParams(Ui.MATCH, Ui.MATCH));
-
-        indicator = new View(this);
-        GradientDrawable ind = Ui.round(Ui.EMBER, 3);
-        indicator.setBackground(ind);
-        indicator.setElevation(Ui.dp(2));
-        navBar.addView(indicator, new FrameLayout.LayoutParams(Ui.dp(30), Ui.dp(3), Gravity.LEFT | Gravity.TOP));
-        root.addView(navBar, new FrameLayout.LayoutParams(Ui.MATCH, Ui.dp(68), Gravity.BOTTOM));
+        FrameLayout.LayoutParams il = new FrameLayout.LayoutParams(Ui.MATCH, Ui.MATCH);
+        il.setMargins(Ui.dp(14), 0, Ui.dp(14), 0);
+        navBar.addView(navItems, il);
+        root.addView(navBar, new FrameLayout.LayoutParams(Ui.MATCH, Ui.dp(84), Gravity.BOTTOM));
     }
 
     void showTab(int i) {
@@ -131,38 +134,14 @@ public class MainActivity extends Activity {
         s.onShow();
         for (int k = 0; k < 5; k++) {
             boolean on = k == i;
-            tabIcons[k].set(TAB_ICONS[k], on ? Ui.EMBER : Ui.MUTED);
+            tabIcons[k].set(TAB_ICONS[k], on ? 0xFF140A05 : Ui.MUTED);
             tabLabels[k].setTextColor(on ? Ui.TEXT : Ui.MUTED);
             tabLabels[k].setTypeface(on ? Ui.BOLD : Ui.REG);
-            if (on) {
-                tabIcons[k].animate().scaleX(1.18f).scaleY(1.18f).setDuration(160).withEndAction(new Runnable() {
-                    int kk;
-
-                    Runnable of(int x) {
-                        kk = x;
-                        return this;
-                    }
-
-                    @Override
-                    public void run() {
-                        tabIcons[kk].animate().scaleX(1f).scaleY(1f).setDuration(260).setInterpolator(new OvershootInterpolator(3f)).start();
-                    }
-                }.of(k)).start();
-            }
+            medals[k].setBackground(on ? Ui.round(Ui.EMBER, 22, Ui.BG, 3) : null);
+            medals[k].setElevation(on ? Ui.dp(6) : 0);
+            medals[k].animate().translationY(on ? -Ui.dp(15) : 0).scaleX(on ? 1.1f : 1f).scaleY(on ? 1.1f : 1f)
+                    .setDuration(380).setInterpolator(new OvershootInterpolator(on ? 2.2f : 1f)).start();
         }
-        moveIndicator();
-    }
-
-    private void moveIndicator() {
-        navItems.post(new Runnable() {
-            @Override
-            public void run() {
-                View item = navItems.getChildAt(tab);
-                if (item == null) return;
-                float x = item.getLeft() + (item.getWidth() - indicator.getWidth()) / 2f;
-                indicator.animate().translationX(x).setDuration(380).setInterpolator(new OvershootInterpolator(1.4f)).start();
-            }
-        });
     }
 
     /** Opens a full-screen session on top of everything. */

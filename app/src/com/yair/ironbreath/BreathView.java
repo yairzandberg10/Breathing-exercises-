@@ -92,6 +92,11 @@ final class BreathView extends View {
         c.drawCircle(cx, cy, R * 1.2f, p);
         p.setShader(null);
 
+        if (compact) {
+            drawOrb(c, scale, t);
+            postInvalidateOnAnimation();
+            return;
+        }
         // bezel ticks, filled up to session progress
         int ticks = 72;
         for (int i = 0; i < ticks; i++) {
@@ -220,27 +225,10 @@ final class BreathView extends View {
             }
         }
 
-        // orb + halo
-        p.setStyle(Paint.Style.FILL);
-        c.save();
-        c.scale(orbScale, orbScale, cx, cy);
-        p.setShader(haloShader);
-        c.drawCircle(cx, cy, R * 0.62f * 1.6f, p);
-        p.setShader(orbShader);
-        c.drawCircle(cx, cy, R * 0.62f, p);
-        p.setShader(null);
-        // molten surface bands
-        p.setStyle(Paint.Style.STROKE);
-        p.setStrokeWidth(Ui.dp(1.2f) / Math.max(0.2f, orbScale));
-        for (int k = 0; k < 3; k++) {
-            float rr = R * 0.62f * (0.35f + 0.2f * k + 0.04f * (float) Math.sin(t * 0.8f + k));
-            p.setColor(Ui.alpha(0xFFFFFFFF, 0.06f + 0.03f * k));
-            c.drawCircle(cx + (float) Math.sin(t * 0.4f + k) * Ui.dp(3), cy, rr, p);
-        }
-        c.restore();
+        drawOrb(c, orbScale, t);
 
         // text
-        if (!compact) {
+        {
             tp.setTypeface(Ui.BOLD);
             tp.setColor(0xFFFFFFFF);
             tp.setTextSize(Ui.dp(24));
@@ -260,6 +248,26 @@ final class BreathView extends View {
             tp.clearShadowLayer();
         }
         postInvalidateOnAnimation();
+    }
+
+    private void drawOrb(Canvas c, float orbScale, float t) {
+        p.setStyle(Paint.Style.FILL);
+        c.save();
+        c.scale(orbScale, orbScale, cx, cy);
+        p.setShader(haloShader);
+        c.drawCircle(cx, cy, R * 0.62f * 1.6f, p);
+        p.setShader(orbShader);
+        c.drawCircle(cx, cy, R * 0.62f, p);
+        p.setShader(null);
+        // molten surface bands
+        p.setStyle(Paint.Style.STROKE);
+        p.setStrokeWidth(Ui.dp(1.2f) / Math.max(0.2f, orbScale));
+        for (int k = 0; k < 3; k++) {
+            float rr = R * 0.62f * (0.35f + 0.2f * k + 0.04f * (float) Math.sin(t * 0.8f + k));
+            p.setColor(Ui.alpha(0xFFFFFFFF, 0.06f + 0.03f * k));
+            c.drawCircle(cx + (float) Math.sin(t * 0.4f + k) * Ui.dp(3), cy, rr, p);
+        }
+        c.restore();
     }
 
     // ------------------------------------------------------------------ preview helper

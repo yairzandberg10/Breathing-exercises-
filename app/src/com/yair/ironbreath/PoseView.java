@@ -74,7 +74,7 @@ final class PoseView extends View {
         for (int i = 0; i < 30; i++) {
             cur[i] = from[i] + (to[i] - from[i]) * e;
         }
-        float tw = 0.075f * currentWidth();
+        float tw = 0.058f * currentWidth();
 
         // floor glow + mat
         p.setStyle(Paint.Style.FILL);
@@ -92,12 +92,12 @@ final class PoseView extends View {
         int back = Ui.mix(color, Ui.BG, 0.5f);
         int front = color;
         int bright = Ui.mix(color, 0xFFFFFFFF, 0.18f);
-        float lw = s * 0.07f;
+        float lw = s * 0.052f;
 
         // glow pass
         p.setStyle(Paint.Style.STROKE);
-        p.setColor(Ui.alpha(color, 0.10f));
-        drawLimbs(c, lw * 2.2f, lw * 2.2f, bob, true);
+        p.setColor(0x00000000);
+        drawLimbs(c, lw * 1.8f, lw * 2.2f, bob, true);
 
         // back limbs
         p.setColor(back);
@@ -131,7 +131,7 @@ final class PoseView extends View {
         limb(c, 1, 2, lw * 0.85f, bob);
         p.setStyle(Paint.Style.FILL);
         p.setColor(bright);
-        c.drawCircle(X(0), Y(0, bob), s * 0.062f, p);
+        c.drawCircle(X(0), Y(0, bob), s * 0.056f, p);
 
         // front limbs
         p.setStyle(Paint.Style.STROKE);

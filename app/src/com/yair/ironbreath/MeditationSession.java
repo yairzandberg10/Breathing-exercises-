@@ -42,7 +42,7 @@ final class MeditationSession extends Screen {
         scrim.setBackground(new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{0xE60B0C10, 0x990B0C10, 0xF50B0C10}));
         root.addView(scrim, new FrameLayout.LayoutParams(Ui.MATCH, Ui.MATCH));
         embers = new EmberView(a);
-        embers.ambient = 14;
+        embers.ambient = 0;
         embers.color = m.color;
         root.addView(embers, new FrameLayout.LayoutParams(Ui.MATCH, Ui.MATCH));
 
@@ -66,10 +66,10 @@ final class MeditationSession extends Screen {
         auraBox.addView(aura, new FrameLayout.LayoutParams(size, size, Gravity.CENTER));
         LinearLayout center = Ui.vbox(a);
         center.setGravity(Gravity.CENTER);
-        timeV = Ui.text(a, Ui.mmss(m.total()), 34, 0xFFFFFFFF, Ui.NUM);
+        timeV = Ui.centered(a, Ui.mmss(m.total()), 34, 0xFFFFFFFF, Ui.NUM);
         timeV.setShadowLayer(Ui.dp(8), 0, 0, 0xAA000000);
         center.addView(timeV);
-        stepV = Ui.text(a, "", 12, 0xCCEDE6DA, Ui.REG);
+        stepV = Ui.centered(a, "", 12, 0xCCEDE6DA, Ui.REG);
         stepV.setPadding(0, Ui.dp(4), 0, 0);
         center.addView(stepV);
         auraBox.addView(center, new FrameLayout.LayoutParams(Ui.WRAP, Ui.WRAP, Gravity.CENTER));

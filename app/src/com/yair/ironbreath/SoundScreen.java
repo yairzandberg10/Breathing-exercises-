@@ -33,8 +33,8 @@ final class SoundScreen extends Screen {
     View create() {
         eng = SoundEngine.get(a);
         LinearLayout col = Ui.vbox(a);
-        col.addView(BreathScreen.header(a, R.drawable.img_forest, "SOUNDSCAPES · סינתזה חיה", "סאונד",
-                "כל צליל נוצר בזמן אמת – בלי לופים ובלי חזרות.\nערבב שכבות עד שזה מרגיש כמו בית.", Ui.EMBER), Ui.lp(Ui.MATCH, Ui.dp(290)));
+        col.addView(BreathScreen.header(a, R.drawable.img_forest, null, "סאונד",
+                "צלילי טבע ומוזיקה מרגיעה – שלב כמה ביחד.", Ui.EMBER), Ui.lp(Ui.MATCH, Ui.dp(240)));
 
         col.addView(playerCard(), Ui.lpm(Ui.MATCH, Ui.WRAP, 16, 4, 16, 0));
 
@@ -80,7 +80,7 @@ final class SoundScreen extends Screen {
         c.setPadding(Ui.dp(16), Ui.dp(14), Ui.dp(16), Ui.dp(14));
         LinearLayout top = Ui.hbox(a);
         LinearLayout tt = Ui.vbox(a);
-        tt.addView(Ui.tag(a, "NOW PLAYING", Ui.EMBER));
+        tt.addView(Ui.text(a, "מתנגן עכשיו", 12, Ui.EMBER, Ui.BOLD));
         nowV = Ui.text(a, "", 16, Ui.TEXT, Ui.BOLD);
         nowV.setPadding(0, Ui.dp(4), 0, 0);
         tt.addView(nowV);

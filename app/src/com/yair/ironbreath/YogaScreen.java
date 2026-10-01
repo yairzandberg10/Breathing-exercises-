@@ -26,8 +26,8 @@ final class YogaScreen extends Screen {
     @Override
     View create() {
         LinearLayout col = Ui.vbox(a);
-        col.addView(BreathScreen.header(a, R.drawable.img_dunes, "YOGA FOR MEN · " + Content.POSES.size() + " תנוחות", "יוגה",
-                "גמישות, כוח ויציבה. בלי גמישות של בלרינה\nובלי תירוצים – רק גוף שעובד טוב יותר.", Ui.MOSS), Ui.lp(Ui.MATCH, Ui.dp(290)));
+        col.addView(BreathScreen.header(a, R.drawable.img_dunes, null, "יוגה",
+                "גמישות, כוח ויציבה – בלי תירוצים.", Ui.MOSS), Ui.lp(Ui.MATCH, Ui.dp(240)));
 
         list = Ui.vbox(a);
         list.setPadding(Ui.dp(16), 0, Ui.dp(16), 0);
@@ -85,7 +85,7 @@ final class YogaScreen extends Screen {
     private View card(final Content.Routine r) {
         LinearLayout c = Ui.hbox(a);
         c.setPadding(Ui.dp(10), Ui.dp(10), Ui.dp(16), Ui.dp(10));
-        c.setBackground(Ui.round(Ui.CARD, 22, 0x17FFFFFF, 1));
+        c.setBackground(Ui.round(Ui.CARD, 22));
         FrameLayout box = new FrameLayout(a);
         box.setBackground(Ui.round(Ui.alpha(r.color, 0.09f), 18));
         PoseView pv = new PoseView(a);
@@ -97,7 +97,6 @@ final class YogaScreen extends Screen {
         c.addView(box, Ui.lp(Ui.dp(104), Ui.dp(104)));
         LinearLayout t = Ui.vbox(a);
         t.setPadding(Ui.dp(14), 0, Ui.dp(8), 0);
-        t.addView(Ui.tag(a, r.en, r.color));
         TextView n = Ui.text(a, r.name, 19, Ui.TEXT, Ui.BOLD);
         n.setPadding(0, Ui.dp(5), 0, Ui.dp(3));
         t.addView(n);
@@ -106,7 +105,6 @@ final class YogaScreen extends Screen {
         meta.setPadding(0, Ui.dp(8), 0, 0);
         t.addView(meta);
         c.addView(t, Ui.weight(1));
-        c.addView(new IconView(a, IconView.LEFT, Ui.DIM), Ui.lp(Ui.dp(18), Ui.dp(18)));
         c.setClickable(true);
         Ui.pressable(c);
         c.setOnClickListener(new View.OnClickListener() {

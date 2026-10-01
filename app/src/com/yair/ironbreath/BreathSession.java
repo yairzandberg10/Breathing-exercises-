@@ -49,15 +49,9 @@ final class BreathSession extends Screen implements BreathView.Driver {
         FrameLayout root = new FrameLayout(a);
         root.setBackgroundColor(Ui.BG);
         root.setClickable(true);
-        int img = t.cat == Content.CAT_SLEEP ? R.drawable.img_lake : t.cat == Content.CAT_ENERGY ? R.drawable.img_hero
-                : t.cat == Content.CAT_FOCUS ? R.drawable.img_ocean : R.drawable.img_cliff;
-        ImageView bg = Ui.image(a, img, 2);
-        bg.setAlpha(0.22f);
-        root.addView(bg, new FrameLayout.LayoutParams(Ui.MATCH, Ui.MATCH));
-        Ui.kenBurns(bg, 40000);
         View scrim = new View(a);
         scrim.setBackground(new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.TOP_BOTTOM,
-                new int[]{0xCC0B0C10, 0x660B0C10, 0xF20B0C10}));
+                new int[]{Ui.mix(t.color, Ui.BG, 0.88f), Ui.BG, Ui.BG}));
         root.addView(scrim, new FrameLayout.LayoutParams(Ui.MATCH, Ui.MATCH));
         embers = new EmberView(a);
         embers.ambient = 0;
@@ -114,10 +108,7 @@ final class BreathSession extends Screen implements BreathView.Driver {
         bar.addView(close, Ui.lp(Ui.dp(42), Ui.dp(42)));
         LinearLayout tt = Ui.vbox(a);
         tt.setGravity(Gravity.CENTER);
-        tt.addView(Ui.tag(a, en, color));
-        TextView tv = Ui.text(a, title, 18, Ui.TEXT, Ui.BOLD);
-        tv.setPadding(0, Ui.dp(3), 0, 0);
-        tt.addView(tv);
+        tt.addView(Ui.centered(a, title, 18, Ui.TEXT, Ui.BOLD));
         bar.addView(tt, Ui.weight(1));
         View sp = new View(a);
         bar.addView(sp, Ui.lp(Ui.dp(42), Ui.dp(42)));
@@ -143,7 +134,7 @@ final class BreathSession extends Screen implements BreathView.Driver {
         LinearLayout how = Ui.vbox(a);
         how.setPadding(Ui.dp(16), Ui.dp(14), Ui.dp(16), Ui.dp(14));
         how.setBackground(Ui.round(0xCC15171D, 18, 0x17FFFFFF, 1));
-        how.addView(Ui.tag(a, "איך מבצעים", Ui.BRASS));
+        how.addView(Ui.text(a, "איך מבצעים", 14, Ui.BRASS, Ui.BOLD));
         for (int i = 0; i < t.how.length; i++) {
             LinearLayout r = Ui.hbox(a);
             r.setGravity(Gravity.TOP);
@@ -577,8 +568,8 @@ final class BreathSession extends Screen implements BreathView.Driver {
     private void cell(LinearLayout row, String v, String l) {
         LinearLayout c = Ui.vbox(a);
         c.setGravity(Gravity.CENTER);
-        c.addView(Ui.text(a, v, 24, t.color, Ui.NUM));
-        TextView lt = Ui.text(a, l, 12, Ui.MUTED, Ui.REG);
+        c.addView(Ui.centered(a, v, 24, t.color, Ui.NUM));
+        TextView lt = Ui.centered(a, l, 12, Ui.MUTED, Ui.REG);
         lt.setPadding(0, Ui.dp(4), 0, 0);
         c.addView(lt);
         row.addView(c, Ui.weight(1));

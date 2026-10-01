@@ -44,7 +44,7 @@ final class YogaSession extends Screen {
         col.setPadding(0, a.statusBar, 0, Ui.dp(22));
         root.addView(col, new FrameLayout.LayoutParams(Ui.MATCH, Ui.MATCH));
         embers = new EmberView(a);
-        embers.ambient = 10;
+        embers.ambient = 0;
         embers.color = r.color;
         root.addView(embers, new FrameLayout.LayoutParams(Ui.MATCH, Ui.MATCH));
 
