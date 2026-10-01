@@ -74,7 +74,7 @@ final class EmberView extends View {
             float a = Math.max(0, Math.min(1, life[i])) * flick;
             p.setColor(Ui.alpha(color, a * 0.25f));
             c.drawCircle(x[i], y[i], size[i] * 3.2f, p);
-            p.setColor(Ui.alpha(Ui.mix(color, 0xFFFFE2B0, 0.5f), a));
+            p.setColor(Ui.alpha(Ui.mix(color, 0xFFE6F2EA, 0.5f), a));
             c.drawCircle(x[i], y[i], size[i], p);
         }
         postInvalidateOnAnimation();

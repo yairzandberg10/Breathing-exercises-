@@ -131,7 +131,7 @@ final class SoundScreen extends Screen {
         for (int i = 0; i < 4; i++) {
             boolean on = i == k;
             timerChips[i].setBackground(on ? Ui.round(Ui.EMBER, 15) : Ui.round(0x14FFFFFF, 15));
-            timerChips[i].setTextColor(on ? 0xFF140A05 : Ui.TEXT);
+            timerChips[i].setTextColor(on ? 0xFF0B1A16 : Ui.TEXT);
         }
         updateTimer();
     }

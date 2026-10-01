@@ -150,10 +150,10 @@ final class BreathSession extends Screen implements BreathView.Driver {
         c.addView(how, Ui.lpm(Ui.MATCH, Ui.WRAP, 0, 10, 0, 0));
 
         if (t.warning != null) {
-            TextView w = Ui.text(a, "⚠  " + t.warning, 13, 0xFFFFC27A, Ui.REG);
+            TextView w = Ui.text(a, "⚠  " + t.warning, 13, 0xFFE3CFA6, Ui.REG);
             w.setLineSpacing(0, 1.25f);
             w.setPadding(Ui.dp(14), Ui.dp(12), Ui.dp(14), Ui.dp(12));
-            w.setBackground(Ui.round(0x22FFA23A, 14, 0x55FFA23A, 1));
+            w.setBackground(Ui.round(0x1FE0BE7A, 14, 0x55E0BE7A, 1));
             c.addView(w, Ui.lpm(Ui.MATCH, Ui.WRAP, 0, 12, 0, 0));
         }
 
@@ -181,7 +181,7 @@ final class BreathSession extends Screen implements BreathView.Driver {
         toggles.addView(toggle(IconView.VIBRATE, "רטט", "vib"), Ui.weight(1));
         c.addView(toggles, Ui.lpm(Ui.MATCH, Ui.WRAP, 0, 12, 0, 0));
 
-        TextView start = Ui.button(a, "התחל", t.color, 0xFF140A05);
+        TextView start = Ui.button(a, "התחל", t.color, 0xFF0B1A16);
         start.setTextSize(18);
         start.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -258,7 +258,7 @@ final class BreathSession extends Screen implements BreathView.Driver {
         info.addView(timeLabel);
         c.addView(info, Ui.lp(Ui.MATCH, Ui.WRAP));
 
-        continueBtn = Ui.button(a, "נשמתי – המשך", t.color, 0xFF140A05);
+        continueBtn = Ui.button(a, "נשמתי – המשך", t.color, 0xFF0B1A16);
         continueBtn.setVisibility(View.GONE);
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -287,7 +287,7 @@ final class BreathSession extends Screen implements BreathView.Driver {
         FrameLayout pause = new FrameLayout(a);
         pause.setBackground(Ui.round(t.color, 40));
         pause.setElevation(Ui.dp(8));
-        pauseIcon = new IconView(a, IconView.PAUSE, 0xFF140A05);
+        pauseIcon = new IconView(a, IconView.PAUSE, 0xFF0B1A16);
         pause.addView(pauseIcon, new FrameLayout.LayoutParams(Ui.dp(28), Ui.dp(28), Gravity.CENTER));
         pause.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -351,7 +351,7 @@ final class BreathSession extends Screen implements BreathView.Driver {
         pausedTotal = 0;
         bestThisSession = 0;
         newRecord = false;
-        pauseIcon.set(IconView.PAUSE, 0xFF140A05);
+        pauseIcon.set(IconView.PAUSE, 0xFF0B1A16);
         crossfade(setupPanel, runPanel);
         resizeOrb(bigH);
         roundLabel.setText("מתכוננים");
@@ -477,13 +477,13 @@ final class BreathSession extends Screen implements BreathView.Driver {
         if (!paused) {
             paused = true;
             pausedAt = now;
-            pauseIcon.set(IconView.PLAY, 0xFF140A05);
+            pauseIcon.set(IconView.PLAY, 0xFF0B1A16);
         } else {
             paused = false;
             long d = now - pausedAt;
             phaseStart += d;
             pausedTotal += d;
-            pauseIcon.set(IconView.PAUSE, 0xFF140A05);
+            pauseIcon.set(IconView.PAUSE, 0xFF0B1A16);
             bv.label = seq.get(idx).label;
         }
     }
@@ -554,7 +554,7 @@ final class BreathSession extends Screen implements BreathView.Driver {
         btns.addView(again, Ui.weight(1));
         View g = new View(a);
         btns.addView(g, Ui.lp(Ui.dp(12), 1));
-        TextView close = Ui.button(a, "סיום", t.color, 0xFF140A05);
+        TextView close = Ui.button(a, "סיום", t.color, 0xFF0B1A16);
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -113,7 +113,7 @@ final class YogaSession extends Screen {
         FrameLayout play = new FrameLayout(a);
         play.setBackground(Ui.round(r.color, 40));
         play.setElevation(Ui.dp(8));
-        playIc = new IconView(a, IconView.PLAY, 0xFF140A05);
+        playIc = new IconView(a, IconView.PLAY, 0xFF0B1A16);
         play.addView(playIc, new FrameLayout.LayoutParams(Ui.dp(28), Ui.dp(28), Gravity.CENTER));
         play.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,7 +145,7 @@ final class YogaSession extends Screen {
         controls.addView(next, Ui.lp(Ui.dp(52), Ui.dp(52)));
         col.addView(controls);
 
-        finishBtn = Ui.button(a, "סיום", r.color, 0xFF140A05);
+        finishBtn = Ui.button(a, "סיום", r.color, 0xFF0B1A16);
         finishBtn.setVisibility(View.GONE);
         finishBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -202,7 +202,7 @@ final class YogaSession extends Screen {
             pose.breathe = !paused;
             if (paused) Voice.get(a).stop();
         }
-        playIc.set(paused ? IconView.PLAY : IconView.PAUSE, 0xFF140A05);
+        playIc.set(paused ? IconView.PLAY : IconView.PAUSE, 0xFF0B1A16);
     }
 
     private void go(int i) {

@@ -124,20 +124,20 @@ def to_np(im): return np.asarray(im).astype(float) / 255.0
 # ---------------- scenes ----------------
 def hero():
     W, H = 1080, 1350
-    img = vgrad(W, H, [(0, '#07080c'), (0.30, '#161a26'), (0.52, '#5a2a1c'), (0.62, '#c4562a'), (0.70, '#f09a4a'), (1, '#1a0f0a')])
+    img = vgrad(W, H, [(0, '#05080b'), (0.30, '#0f1c24'), (0.50, '#25414a'), (0.62, '#5f857f'), (0.68, '#9dbab0'), (1, '#0a1213')])
     stars(img, 900, 0.45, seed=3)
-    glow(img, W * 0.62, H * 0.64, 700, '#ff7a2a', 0.55, 2.2)
-    glow(img, W * 0.62, H * 0.64, 180, '#ffd08a', 0.9, 1.6)
-    disc(img, W * 0.62, H * 0.64, 70, '#ffe2b0', 3)
-    ridge_layer(img, 0.60, 0.10, '#8a3b22', 11, fog='#e0763a')
-    haze(img, 0.58, 0.70, '#f08a44', 0.25)
-    ridge_layer(img, 0.66, 0.12, '#4a1f16', 12, fog='#b04a26', sharp=True)
-    ridge_layer(img, 0.74, 0.12, '#24110d', 13, fog='#5a2416', sharp=True)
-    haze(img, 0.74, 0.86, '#6a2c18', 0.25)
-    ridge_layer(img, 0.84, 0.10, '#0f0907', 14, rough=0.6)
-    ridge_layer(img, 0.93, 0.05, '#060404', 15, rough=0.65)
+    glow(img, W * 0.68, H * 0.30, 360, '#a9c9c4', 0.25, 2.0)
+    disc(img, W * 0.68, H * 0.30, 46, '#e9efe8', 2.5)
+    glow(img, W * 0.5, H * 0.66, 800, '#bcd6cc', 0.22, 2.2)
+    ridge_layer(img, 0.60, 0.10, '#4f716f', 11, fog='#a7c2b9')
+    haze(img, 0.58, 0.70, '#b5cdc4', 0.28)
+    ridge_layer(img, 0.66, 0.12, '#2e4a4b', 12, fog='#6f918b', sharp=True)
+    ridge_layer(img, 0.74, 0.12, '#1a2d2f', 13, fog='#3c5a59', sharp=True)
+    haze(img, 0.74, 0.86, '#5d7f7a', 0.22)
+    ridge_layer(img, 0.84, 0.10, '#0d1718', 14, rough=0.6)
+    ridge_layer(img, 0.93, 0.05, '#070c0d', 15, rough=0.65)
     im = finish(img, 'hero')
-    draw_figure(im, 'standing', W * 0.30, H * 0.845, 150)
+    draw_figure(im, 'standing', W * 0.30, H * 0.845, 150, color=(6, 10, 11))
     return im
 
 def ocean():
@@ -175,8 +175,8 @@ def forest():
     W, H = 1080, 1080
     img = vgrad(W, H, [(0, '#04060a'), (0.4, '#0b1512'), (0.7, '#16241c'), (1, '#050705')])
     stars(img, 500, 0.4, seed=9)
-    glow(img, W * 0.5, H * 0.84, 520, '#ff7a2a', 0.55, 2.0)
-    glow(img, W * 0.5, H * 0.86, 140, '#ffc070', 0.9, 1.5)
+    glow(img, W * 0.5, H * 0.84, 480, '#d9955a', 0.35, 2.0)
+    glow(img, W * 0.5, H * 0.86, 130, '#f0c487', 0.6, 1.5)
     im = finish(img, 'forest', grain=0.02)
     d = ImageDraw.Draw(im)
     r = np.random.default_rng(4)
@@ -195,42 +195,42 @@ def forest():
     cx, cy = W * 0.5, H * 0.87
     d.polygon([(cx - 90, cy + 8), (cx + 80, cy - 20), (cx + 90, cy - 4), (cx - 80, cy + 22)], fill=(30, 16, 10))
     d.polygon([(cx + 90, cy + 8), (cx - 80, cy - 20), (cx - 90, cy - 4), (cx + 80, cy + 22)], fill=(40, 22, 12))
-    for s, col in ((1.0, (255, 110, 40)), (0.7, (255, 170, 70)), (0.4, (255, 230, 170))):
+    for s, col in ((1.0, (214, 128, 72)), (0.7, (236, 176, 110)), (0.4, (248, 226, 186))):
         d.polygon([(cx - 55 * s, cy - 5), (cx - 20 * s, cy - 120 * s), (cx, cy - 70 * s), (cx + 18 * s, cy - 170 * s), (cx + 55 * s, cy - 5)], fill=col)
     arr = to_np(im)
     for _ in range(45):
         x = r.normal(W * 0.5, 160); y = r.uniform(H * 0.35, H * 0.8)
-        glow(arr, x, y, r.uniform(4, 9), '#ffb060', r.uniform(0.4, 1.0), 1.5)
+        glow(arr, x, y, r.uniform(3, 7), '#e8c48e', r.uniform(0.2, 0.6), 1.5)
     im = Image.fromarray((np.clip(arr, 0, 1) * 255).astype(np.uint8))
     draw_figure(im, 'lotus', W * 0.24, H * 0.9, 260)
     return im
 
 def cliff_sunrise():
     W, H = 1080, 1350
-    img = vgrad(W, H, [(0, '#0a0d18'), (0.28, '#2a2a44'), (0.48, '#8a5a6a'), (0.58, '#e8a070'), (0.64, '#ffd9a0'), (1, '#10090a')])
+    img = vgrad(W, H, [(0, '#080d12'), (0.28, '#1c2c36'), (0.48, '#4c6670'), (0.58, '#9fb6b2'), (0.64, '#dcdccb'), (1, '#0a1012')])
     stars(img, 300, 0.25, seed=12)
-    glow(img, W * 0.5, H * 0.63, 800, '#ffb070', 0.45, 2.2)
-    disc(img, W * 0.5, H * 0.635, 95, '#fff0d0', 3)
-    ridge_layer(img, 0.64, 0.04, '#9a6a70', 41, fog='#f0b890')
-    haze(img, 0.6, 0.72, '#f6c8a0', 0.35)
-    ridge_layer(img, 0.70, 0.07, '#5a3a48', 42, fog='#c08a88')
-    ridge_layer(img, 0.78, 0.06, '#2a1c26', 43, fog='#6a4a54')
-    haze(img, 0.76, 0.84, '#9a6a74', 0.25)
+    glow(img, W * 0.5, H * 0.63, 800, '#e6e2c8', 0.30, 2.2)
+    disc(img, W * 0.5, H * 0.635, 85, '#f4f1e2', 3)
+    ridge_layer(img, 0.64, 0.04, '#7f9a9a', 41, fog='#cbd5cb')
+    haze(img, 0.6, 0.72, '#d4ddd3', 0.38)
+    ridge_layer(img, 0.70, 0.07, '#47605f', 42, fog='#8ca39e')
+    ridge_layer(img, 0.78, 0.06, '#203233', 43, fog='#4f6865')
+    haze(img, 0.76, 0.84, '#6f8984', 0.25)
     yy, xx = np.mgrid[0:H, 0:W]
     top = H * (0.80 + 0.02 * np.sin(xx / W * 3))
-    img[yy > top] = hexc('#07050a')
+    img[yy > top] = hexc('#070b0c')
     im = finish(img, 'cliff')
-    draw_figure(im, 'lotus', W * 0.5, H * 0.80, 230)
+    draw_figure(im, 'lotus', W * 0.5, H * 0.80, 230, color=(6, 10, 11))
     return im
 
 def dunes():
     W, H = 1080, 1350
-    img = vgrad(W, H, [(0, '#0e1220'), (0.3, '#3a3040'), (0.55, '#c8704a'), (0.66, '#f4b06a'), (1, '#2a140c')])
-    glow(img, W * 0.28, H * 0.58, 700, '#ffa050', 0.5, 2.2)
-    disc(img, W * 0.28, H * 0.585, 80, '#ffe6b8', 3)
+    img = vgrad(W, H, [(0, '#0b1116'), (0.3, '#2b3c44'), (0.55, '#8ea39c'), (0.66, '#e2d6b6'), (1, '#1b1a14')])
+    glow(img, W * 0.28, H * 0.58, 700, '#eadcb4', 0.3, 2.2)
+    disc(img, W * 0.28, H * 0.585, 72, '#f6efda', 3)
     stars(img, 250, 0.2, seed=17)
     yy, xx = np.mgrid[0:H, 0:W]
-    for base, amp, col, seed, fr in ((0.66, 0.05, '#b8663e', 51, 1.3), (0.74, 0.07, '#8a4228', 52, 1.0), (0.84, 0.08, '#4a2014', 53, 0.8), (0.93, 0.06, '#1c0c08', 54, 0.6)):
+    for base, amp, col, seed, fr in ((0.66, 0.05, '#a99c7e', 51, 1.3), (0.74, 0.07, '#7b745e', 52, 1.0), (0.84, 0.08, '#3c3b31', 53, 0.8), (0.93, 0.06, '#141512', 54, 0.6)):
         n = noise1d(W, 4, seed, 0.35)
         ridge = (base - amp * n) * H
         m = yy > ridge[None, :]
@@ -240,7 +240,7 @@ def dunes():
         c = hexc(col)
         img[m] = (c[None, None, :] * shade[..., None])[m]
     im = finish(img, 'dunes')
-    draw_figure(im, 'warrior2', W * 0.64, H * 0.815, 260)
+    draw_figure(im, 'warrior2', W * 0.64, H * 0.815, 260, color=(10, 12, 12))
     return im
 
 def night_lake():
@@ -263,18 +263,18 @@ def night_lake():
 
 def icon(size):
     s = size * 4
-    img = vgrad(s, s, [(0, '#1b1410'), (0.55, '#3a1a0e'), (1, '#0a0706')])
-    glow(img, s * 0.5, s * 0.56, s * 0.55, '#ff6a2b', 0.6, 2.0)
+    img = vgrad(s, s, [(0, '#12201f'), (0.55, '#1d3533'), (1, '#0a1213')])
+    glow(img, s * 0.5, s * 0.56, s * 0.55, '#8cc4ac', 0.45, 2.0)
     im = finish(img, 'icon', vignette=0.4, grain=0.0)
     d = ImageDraw.Draw(im)
     cx, cy = s / 2, s * 0.5
     for i, (r, wd, a) in enumerate(((0.36, 0.022, 255), (0.28, 0.014, 180), (0.21, 0.01, 120))):
-        R = r * s; d.ellipse([cx - R, cy - R, cx + R, cy + R], outline=(255, 140, 70, a), width=int(wd * s))
+        R = r * s; d.ellipse([cx - R, cy - R, cx + R, cy + R], outline=(150, 205, 180, a), width=int(wd * s))
     for k in range(60):
         ang = k / 60 * 2 * math.pi; r1 = 0.42 * s; r2 = (0.46 if k % 5 == 0 else 0.44) * s
-        d.line([(cx + math.cos(ang) * r1, cy + math.sin(ang) * r1), (cx + math.cos(ang) * r2, cy + math.sin(ang) * r2)], fill=(212, 162, 90), width=int(s * (0.012 if k % 5 == 0 else 0.006)))
-    d.polygon([(cx - 0.2 * s, cy + 0.1 * s), (cx - 0.05 * s, cy - 0.1 * s), (cx + 0.02 * s, cy - 0.01 * s), (cx + 0.08 * s, cy - 0.07 * s), (cx + 0.2 * s, cy + 0.1 * s)], fill=(20, 10, 8))
-    d.ellipse([cx - 0.04 * s, cy - 0.21 * s, cx + 0.04 * s, cy - 0.13 * s], fill=(255, 214, 150))
+        d.line([(cx + math.cos(ang) * r1, cy + math.sin(ang) * r1), (cx + math.cos(ang) * r2, cy + math.sin(ang) * r2)], fill=(205, 182, 140), width=int(s * (0.012 if k % 5 == 0 else 0.006)))
+    d.polygon([(cx - 0.2 * s, cy + 0.1 * s), (cx - 0.05 * s, cy - 0.1 * s), (cx + 0.02 * s, cy - 0.01 * s), (cx + 0.08 * s, cy - 0.07 * s), (cx + 0.2 * s, cy + 0.1 * s)], fill=(10, 20, 20))
+    d.ellipse([cx - 0.04 * s, cy - 0.21 * s, cx + 0.04 * s, cy - 0.13 * s], fill=(236, 240, 228))
     im = im.resize((size, size), Image.LANCZOS)
     mask = Image.new('L', (size, size), 0); ImageDraw.Draw(mask).ellipse([0, 0, size - 1, size - 1], fill=255)
     out = Image.new('RGBA', (size, size), (0, 0, 0, 0)); out.paste(im, (0, 0), mask)

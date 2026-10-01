@@ -68,7 +68,7 @@ public class MainActivity extends Activity {
         // Floating dock; the active section rises out of it as a glowing ember medallion.
         navBar = new FrameLayout(this);
         View dock = new View(this);
-        dock.setBackground(Ui.round(0xFF17191F, 26, 0x14FFFFFF, 1));
+        dock.setBackground(Ui.round(0xFF162124, 26, 0x14FFFFFF, 1));
         dock.setElevation(Ui.dp(10));
         FrameLayout.LayoutParams dl = new FrameLayout.LayoutParams(Ui.MATCH, Ui.dp(62), Gravity.BOTTOM);
         dl.setMargins(Ui.dp(12), 0, Ui.dp(12), Ui.dp(10));
@@ -134,7 +134,7 @@ public class MainActivity extends Activity {
         s.onShow();
         for (int k = 0; k < 5; k++) {
             boolean on = k == i;
-            tabIcons[k].set(TAB_ICONS[k], on ? 0xFF140A05 : Ui.MUTED);
+            tabIcons[k].set(TAB_ICONS[k], on ? 0xFF0B1A16 : Ui.MUTED);
             tabLabels[k].setTextColor(on ? Ui.TEXT : Ui.MUTED);
             tabLabels[k].setTypeface(on ? Ui.BOLD : Ui.REG);
             medals[k].setBackground(on ? Ui.round(Ui.EMBER, 22, Ui.BG, 3) : null);

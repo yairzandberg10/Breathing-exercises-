@@ -64,7 +64,7 @@ final class SoundIconView extends View {
                 } else {
                     float flash = active ? (float) Math.max(0, Math.sin(t * 1.7) * Math.sin(t * 5.3)) : 0.4f;
                     p.setStyle(Paint.Style.FILL);
-                    p.setColor(Ui.alpha(0xFFFFF4C0, 0.35f + 0.65f * flash));
+                    p.setColor(Ui.alpha(0xFFEFF3D8, 0.35f + 0.65f * flash));
                     path.reset();
                     path.moveTo(24, 22);
                     path.lineTo(17, 34);

@@ -67,7 +67,7 @@ final class BreathView extends View {
         shaderColor = color;
         float orbR = R * 0.62f;
         orbShader = new RadialGradient(cx - orbR * 0.25f, cy - orbR * 0.3f, orbR * 1.25f,
-                new int[]{Ui.mix(color, 0xFFFFF4E0, 0.55f), color, Ui.mix(color, 0xFF000000, 0.55f), Ui.mix(color, 0xFF000000, 0.8f)},
+                new int[]{Ui.mix(color, 0xFFF2F6F0, 0.55f), color, Ui.mix(color, 0xFF000000, 0.55f), Ui.mix(color, 0xFF000000, 0.8f)},
                 new float[]{0f, 0.35f, 0.8f, 1f}, Shader.TileMode.CLAMP);
         haloShader = new RadialGradient(cx, cy, orbR * 1.6f,
                 new int[]{Ui.alpha(color, 0.55f), Ui.alpha(color, 0.18f), Ui.alpha(color, 0f)},
@@ -143,7 +143,7 @@ final class BreathView extends View {
             c.drawArc(rf, -90, sweep, false, p);
             double ea = Math.toRadians(-90 + sweep);
             p.setStyle(Paint.Style.FILL);
-            p.setColor(0xFFFFF4E0);
+            p.setColor(0xFFF2F6F0);
             c.drawCircle(cx + (float) Math.cos(ea) * ar, cy + (float) Math.sin(ea) * ar, Ui.dp(4), p);
         }
 
@@ -220,7 +220,7 @@ final class BreathView extends View {
                 p.setStyle(Paint.Style.FILL);
                 p.setColor(Ui.alpha(color, 0.3f));
                 c.drawCircle(dx, dy, Ui.dp(12), p);
-                p.setColor(0xFFFFF4E0);
+                p.setColor(0xFFF2F6F0);
                 c.drawCircle(dx, dy, Ui.dp(5), p);
             }
         }

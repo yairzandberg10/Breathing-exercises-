@@ -75,7 +75,7 @@ final class MeditateScreen extends Screen {
         ImageView iv = Ui.image(a, m.image, 2);
         f.addView(iv, new FrameLayout.LayoutParams(Ui.MATCH, Ui.MATCH));
         View sc = new View(a);
-        sc.setBackground(new GradientDrawable(GradientDrawable.Orientation.RIGHT_LEFT, new int[]{0xF50B0C10, 0xB00B0C10, 0x100B0C10}));
+        sc.setBackground(new GradientDrawable(GradientDrawable.Orientation.RIGHT_LEFT, new int[]{0xF50C1214, 0xB00C1214, 0x100C1214}));
         f.addView(sc, new FrameLayout.LayoutParams(Ui.MATCH, Ui.MATCH));
 
         LinearLayout t = Ui.vbox(a);
@@ -96,7 +96,7 @@ final class MeditateScreen extends Screen {
 
         FrameLayout play = new FrameLayout(a);
         play.setBackground(Ui.round(Ui.alpha(m.color, 0.9f), 26));
-        play.addView(new IconView(a, IconView.PLAY, 0xFF140A05), new FrameLayout.LayoutParams(Ui.dp(20), Ui.dp(20), Gravity.CENTER));
+        play.addView(new IconView(a, IconView.PLAY, 0xFF0B1A16), new FrameLayout.LayoutParams(Ui.dp(20), Ui.dp(20), Gravity.CENTER));
         FrameLayout.LayoutParams pl = new FrameLayout.LayoutParams(Ui.dp(48), Ui.dp(48), Gravity.LEFT | Gravity.BOTTOM);
         pl.setMargins(Ui.dp(16), 0, 0, Ui.dp(16));
         f.addView(play, pl);

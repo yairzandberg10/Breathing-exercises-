@@ -27,7 +27,7 @@ final class BreathScreen extends Screen {
         Ui.kenBurns(iv, 30000);
         View scrim = new View(a);
         scrim.setBackground(new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM,
-                new int[]{0x990B0C10, 0x200B0C10, 0xCC0B0C10, 0xFF0B0C10}));
+                new int[]{0x990C1214, 0x200C1214, 0xCC0C1214, 0xFF0C1214}));
         f.addView(scrim, new FrameLayout.LayoutParams(Ui.MATCH, Ui.MATCH));
         LinearLayout t = Ui.vbox(a);
         t.setPadding(Ui.dp(22), 0, Ui.dp(22), Ui.dp(18));
@@ -88,7 +88,7 @@ final class BreathScreen extends Screen {
         for (int i = 0; i < chips.length; i++) {
             boolean on = i == f;
             chips[i].setBackground(on ? Ui.round(Ui.EMBER, 20) : Ui.round(Ui.CARD, 20, 0x22FFFFFF, 1));
-            chips[i].setTextColor(on ? 0xFF160A04 : Ui.TEXT);
+            chips[i].setTextColor(on ? 0xFF0B1A16 : Ui.TEXT);
         }
         list.removeAllViews();
         for (Content.Technique t : Content.TECHNIQUES) {

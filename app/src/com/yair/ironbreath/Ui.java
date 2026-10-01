@@ -30,20 +30,20 @@ import java.util.HashMap;
 
 /** Shared palette, typography and small view-building helpers. */
 final class Ui {
-    static final int BG = 0xFF0B0C10;
-    static final int BG2 = 0xFF101217;
-    static final int CARD = 0xFF15171D;
-    static final int CARD2 = 0xFF1D2028;
+    static final int BG = 0xFF0C1214;
+    static final int BG2 = 0xFF111A1C;
+    static final int CARD = 0xFF152023;
+    static final int CARD2 = 0xFF1C292C;
     static final int LINE = 0x1FFFFFFF;
-    static final int TEXT = 0xFFEDE6DA;
-    static final int MUTED = 0xFF8E8A83;
-    static final int DIM = 0xFF5C5A57;
-    static final int EMBER = 0xFFFF6A2B;
-    static final int BRASS = 0xFFD4A25A;
-    static final int STEEL = 0xFF7FA7C2;
-    static final int MOSS = 0xFF8FAF7A;
-    static final int BLOOD = 0xFFD9483B;
-    static final int VIOLET = 0xFF9C8CD8;
+    static final int TEXT = 0xFFE8E6DE;
+    static final int MUTED = 0xFF8A9792;
+    static final int DIM = 0xFF55625E;
+    static final int EMBER = 0xFF8CC4AC;
+    static final int BRASS = 0xFFCDB68C;
+    static final int STEEL = 0xFF86AECB;
+    static final int MOSS = 0xFFA8BF8E;
+    static final int BLOOD = 0xFFCF8A74;
+    static final int VIOLET = 0xFFA3A6D6;
 
     static Typeface REG, BOLD, SERIF, NUM, NUM_LIGHT;
     static float density = 3f;

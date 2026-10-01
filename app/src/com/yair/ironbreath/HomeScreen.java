@@ -49,7 +49,7 @@ final class HomeScreen extends Screen {
         Ui.kenBurns(img, 30000);
         View scrim = new View(a);
         scrim.setBackground(new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM,
-                new int[]{0x660B0C10, 0x000B0C10, 0x000B0C10, 0xCC0B0C10, 0xFF0B0C10}));
+                new int[]{0x660C1214, 0x000C1214, 0x000C1214, 0xCC0C1214, 0xFF0C1214}));
         f.addView(scrim, new FrameLayout.LayoutParams(Ui.MATCH, Ui.MATCH));
 
         LinearLayout txt = Ui.vbox(a);
@@ -125,7 +125,7 @@ final class HomeScreen extends Screen {
         ImageView iv = Ui.image(a, img, 2);
         f.addView(iv, new FrameLayout.LayoutParams(Ui.MATCH, Ui.MATCH));
         View scrim = new View(a);
-        scrim.setBackground(new GradientDrawable(GradientDrawable.Orientation.RIGHT_LEFT, new int[]{0xF20B0C10, 0xA00B0C10, 0x100B0C10}));
+        scrim.setBackground(new GradientDrawable(GradientDrawable.Orientation.RIGHT_LEFT, new int[]{0xF20C1214, 0xA00C1214, 0x100C1214}));
         f.addView(scrim, new FrameLayout.LayoutParams(Ui.MATCH, Ui.MATCH));
 
         LinearLayout txt = Ui.vbox(a);
@@ -142,7 +142,7 @@ final class HomeScreen extends Screen {
         FrameLayout play = new FrameLayout(a);
         play.setBackground(Ui.round(Ui.EMBER, 30));
         play.setElevation(Ui.dp(6));
-        play.addView(new IconView(a, IconView.PLAY, 0xFF140A05), new FrameLayout.LayoutParams(Ui.dp(22), Ui.dp(22), Gravity.CENTER));
+        play.addView(new IconView(a, IconView.PLAY, 0xFF0B1A16), new FrameLayout.LayoutParams(Ui.dp(22), Ui.dp(22), Gravity.CENTER));
         FrameLayout.LayoutParams pl = new FrameLayout.LayoutParams(Ui.dp(54), Ui.dp(54), Gravity.LEFT | Gravity.CENTER_VERTICAL);
         pl.setMargins(Ui.dp(20), 0, 0, 0);
         f.addView(play, pl);
@@ -161,7 +161,7 @@ final class HomeScreen extends Screen {
     private View sosCard() {
         LinearLayout r = Ui.hbox(a);
         r.setPadding(Ui.dp(16), Ui.dp(14), Ui.dp(16), Ui.dp(14));
-        r.setBackground(Ui.round(0xFF1C1314, 20));
+        r.setBackground(Ui.round(0xFF1E2224, 20));
         FrameLayout ic = new FrameLayout(a);
         ic.setBackground(Ui.round(Ui.alpha(Ui.BLOOD, 0.18f), 22));
         ic.addView(new IconView(a, IconView.BOLT, Ui.BLOOD), new FrameLayout.LayoutParams(Ui.dp(20), Ui.dp(20), Gravity.CENTER));
@@ -216,7 +216,7 @@ final class HomeScreen extends Screen {
             ImageView iv = Ui.image(a, imgs[i], 2);
             tile.addView(iv, new FrameLayout.LayoutParams(Ui.MATCH, Ui.MATCH));
             View sc = new View(a);
-            sc.setBackground(new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{0x000B0C10, 0x200B0C10, 0xE60B0C10}));
+            sc.setBackground(new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{0x000C1214, 0x200C1214, 0xE60C1214}));
             tile.addView(sc, new FrameLayout.LayoutParams(Ui.MATCH, Ui.MATCH));
             LinearLayout tx = Ui.vbox(a);
             tx.setPadding(Ui.dp(16), 0, Ui.dp(16), Ui.dp(14));

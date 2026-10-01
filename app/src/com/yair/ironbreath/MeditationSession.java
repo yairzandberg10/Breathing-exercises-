@@ -39,7 +39,7 @@ final class MeditationSession extends Screen {
         root.addView(bg, new FrameLayout.LayoutParams(Ui.MATCH, Ui.MATCH));
         Ui.kenBurns(bg, 45000);
         View scrim = new View(a);
-        scrim.setBackground(new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{0xE60B0C10, 0x990B0C10, 0xF50B0C10}));
+        scrim.setBackground(new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{0xE60C1214, 0x990C1214, 0xF50C1214}));
         root.addView(scrim, new FrameLayout.LayoutParams(Ui.MATCH, Ui.MATCH));
         embers = new EmberView(a);
         embers.ambient = 0;
@@ -99,7 +99,7 @@ final class MeditationSession extends Screen {
         FrameLayout play = new FrameLayout(a);
         play.setBackground(Ui.round(m.color, 40));
         play.setElevation(Ui.dp(8));
-        pauseIc = new IconView(a, IconView.PLAY, 0xFF140A05);
+        pauseIc = new IconView(a, IconView.PLAY, 0xFF0B1A16);
         play.addView(pauseIc, new FrameLayout.LayoutParams(Ui.dp(28), Ui.dp(28), Gravity.CENTER));
         play.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,7 +123,7 @@ final class MeditationSession extends Screen {
         controls.addView(amb, Ui.lp(Ui.dp(56), Ui.dp(56)));
         col.addView(controls);
 
-        finishBtn = Ui.button(a, "סיום", m.color, 0xFF140A05);
+        finishBtn = Ui.button(a, "סיום", m.color, 0xFF0B1A16);
         finishBtn.setVisibility(View.GONE);
         finishBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -177,7 +177,7 @@ final class MeditationSession extends Screen {
             if (paused) Voice.get(a).stop();
         }
         aura.paused = paused;
-        pauseIc.set(paused ? IconView.PLAY : IconView.PAUSE, 0xFF140A05);
+        pauseIc.set(paused ? IconView.PLAY : IconView.PAUSE, 0xFF0B1A16);
     }
 
     private final Runnable tick = new Runnable() {
